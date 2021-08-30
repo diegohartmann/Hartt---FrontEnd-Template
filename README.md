@@ -1,2 +1,2 @@
-# lobo.js
-SavaScript library for fluid and fast development.
+# marmita.js
+Biblioteca de métodos JavaScript para facilitar o desenvolvimento.
