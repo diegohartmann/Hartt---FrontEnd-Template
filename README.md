@@ -1,2 +1,2 @@
-# marmita.js
-Biblioteca de métodos JavaScript para facilitar o desenvolvimento.
+# Lobo.js
+JavaScript library for fluid and fast development.
