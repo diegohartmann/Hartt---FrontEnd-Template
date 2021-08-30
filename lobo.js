@@ -19,15 +19,6 @@ function getRandomFloatBetween(_min, _max) {
 function getRandomIntBetween(_min, _max) {
     return Math.floor(randomFloatBetween(_min, _max));
 }
-function getSquare(_number){
-    return _number*_number;
-}
-function getDouble(_number){
-    return _number*2;
-}
-function getHalf(_number){
-    return _number/2;
-}
 function addClassTo(_element, _className) {
     _element.classList.add(_className);
 }
