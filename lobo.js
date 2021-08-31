@@ -1,3 +1,6 @@
+function onWindowLoad(_callback){
+    window.addEventListener('load', _callback);
+}
 function clog(_message) {
     console.log(_message);
 }
@@ -31,47 +34,73 @@ function removeClassFrom(_element, _class) {
 function setClassNameTo(_element, _className){
     _element.className = _className;
 }
-function getCurrencyStringFrom(_numberPrice, _currencyFormat, _numberFormat, _currencyDisplay = 'symbol') {
-    //_currencyDisplay = 'symbol' / 'code' / 'name'
-    return _numberPrice.toLocaleString(localeStringOptions.countries[_numberFormat.toLowerCase()], {
+function getCurrencyStringFrom(_numberPrice, _currencyFormat, _numberFormat, _currencyDisplay = 'symbol' /*'symbol' / 'code' / 'name'*/) {
+    return _numberPrice.toLocaleString(localeStringOptionsUsers[_numberFormat.toLowerCase()].country, {
         style: "currency",
-        currency: localeStringOptions.currencies[_currencyFormat.toLowerCase()],
+        currency: localeStringOptionsUsers[_currencyFormat.toLowerCase()].currency,
         currencyDisplay : _currencyDisplay,
     });
 }
-const localeStringOptions = {
-    countries : {
-        //br
-        br: 'pt-BR',
-        ptbr: 'pt-BR',
-        pt_br: 'pt-BR',
-        bra: 'pt-BR',
-        brazil: 'pt-BR',
-        brasil: 'pt-BR',
-        //eua
-        eu: 'eng-US',
-        us: 'eng-US',
-        eua: 'eng-US',
-        usa: 'eng-US',
-        unitedstates: 'eng-US',
-        estadosunidos: 'eng-US',
+const localeStringOptions={
+    _br_: {
+        currency: 'BRL',
+        country: 'pt-BR',
     },
-    currencies : {
-        //br
-        br: 'BRL',
-        ptbr: 'BRL',
-        pt_br: 'BRL',
-        bra: 'BRL',
-        brazil: 'BRL',
-        brasil: 'BRL',
-        //eua
-        eu: 'USD',
-        us: 'USD',
-        eua: 'USD',
-        usa: 'USD',
-        unitedstates: 'USD',
-        estadosunidos: 'USD',
-    },
+    _usa_: {
+        currency: 'USD',
+        country: 'eng-US',
+    } ,
+}
+const localeStringOptionsUsers={
+    //br
+    'br': localeStringOptions._br_ ,
+    'ptbr': localeStringOptions._br_,
+    'pt-br': localeStringOptions._br_,
+    'pt_br': localeStringOptions._br_,
+    'bra': localeStringOptions._br_,
+    'brazil': localeStringOptions._br_,
+    'brasil': localeStringOptions._br_,
+    // eua
+    'eu': localeStringOptions._usa_,
+    'us': localeStringOptions._usa_ ,
+    'eua': localeStringOptions._usa_,
+    'usa': localeStringOptions._usa_ ,
+    'unitedstates': localeStringOptions._usa_,
+    'estadosunidos': localeStringOptions._usa_,
+}
+// const localeStringOptions = {
+//     countries : {
+//         //br
+//         br: 'pt-BR',
+//         ptbr: 'pt-BR',
+//         pt_br: 'pt-BR',
+//         bra: 'pt-BR',
+//         brazil: 'pt-BR',
+//         brasil: 'pt-BR',
+//         //eua
+//         eu: 'eng-US',
+//         us: 'eng-US',
+//         eua: 'eng-US',
+//         usa: 'eng-US',
+//         unitedstates: 'eng-US',
+//         estadosunidos: 'eng-US',
+//     },
+//     currencies : {
+//         //br
+//         br: 'BRL',
+//         ptbr: 'BRL',
+//         pt_br: 'BRL',
+//         bra: 'BRL',
+//         brazil: 'BRL',
+//         brasil: 'BRL',
+//         //eua
+//         eu: 'USD',
+//         us: 'USD',
+//         eua: 'USD',
+//         usa: 'USD',
+//         unitedstates: 'USD',
+//         estadosunidos: 'USD',
+//     },
     // ar-SA Arabic (Saudi Arabia)
     // bn-BD Bangla (Bangladesh)
     // bn-IN Bangla (India)
@@ -125,7 +154,7 @@ const localeStringOptions = {
     // zh-CN Mainland China, simplified characters
     // zh-HK Hong Kong, traditional characters
     // zh-TW Taiwan, traditional characters
-}
+// }
 function getNumberFromString(_string){
     return +((_string).trim())
 }
