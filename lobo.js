@@ -34,40 +34,52 @@ function removeClassFrom(_element, _class) {
 function setClassNameTo(_element, _className){
     _element.className = _className;
 }
-function getCurrencyStringFrom(_numberPrice, _currencyFormat, _numberFormat, _currencyDisplay = 'symbol' /*'symbol' / 'code' / 'name'*/) {
-    return _numberPrice.toLocaleString(localeStringOptionsUsers[_numberFormat.toLowerCase()].country, {
-        style: "currency",
-        currency: localeStringOptionsUsers[_currencyFormat.toLowerCase()].currency,
-        currencyDisplay : _currencyDisplay,
-    });
+function getCurrencyStringFrom(_numberPrice, _currencyFormat = 'usa', _numberFormat = 'usa', _currencyDisplay = 'symbol' /*'symbol' / 'code' / 'name'*/) {
+    function finalNumberFormat(){
+        return localeStringOptionsUsers(_numberFormat.toLowerCase())['country'];
+    }
+    function finalCurrencyCode(){
+        return localeStringOptionsUsers(_currencyFormat.toLowerCase())['currency'];
+    }
+    function localeStringOptionsUsers(_user){
+        const _users_ = {
+            //br
+            'br': localeStringOptions('_br_') ,
+            'ptbr':localeStringOptions('_br_') ,
+            'pt-br': localeStringOptions('_br_') ,
+            'pt_br':localeStringOptions('_br_') ,
+            'bra': localeStringOptions('_br_') ,
+            'brazil': localeStringOptions('_br_') ,
+            'brasil': localeStringOptions('_br_') ,
+            // eua
+            'eu': localeStringOptions('_usa_') ,
+            'us': localeStringOptions('_usa_') ,
+            'eua': localeStringOptions('_usa_') ,
+            'usa': localeStringOptions('_usa_') ,
+            'unitedstates': localeStringOptions('_usa_') ,
+            'estadosunidos': localeStringOptions('_usa_') ,
+        }
+        return _users_[_user];
+
+        //===============
+        function localeStringOptions(_option){
+            const _options_ = {
+                _br_: {
+                    'currency': 'BRL',
+                    'country': 'pt-BR',
+                },
+                _usa_: {
+                    'currency': 'USD',
+                    'country': 'eng-US',
+                } ,
+            }
+            return _options_[_option];
+        }
+    }
+    return _numberPrice.toLocaleString(finalNumberFormat(),{ style:"currency",currency:finalCurrencyCode(),currencyDisplay: _currencyDisplay.toLowerCase()});
+  
 }
-const localeStringOptions={
-    _br_: {
-        currency: 'BRL',
-        country: 'pt-BR',
-    },
-    _usa_: {
-        currency: 'USD',
-        country: 'eng-US',
-    } ,
-}
-const localeStringOptionsUsers={
-    //br
-    'br': localeStringOptions._br_ ,
-    'ptbr': localeStringOptions._br_,
-    'pt-br': localeStringOptions._br_,
-    'pt_br': localeStringOptions._br_,
-    'bra': localeStringOptions._br_,
-    'brazil': localeStringOptions._br_,
-    'brasil': localeStringOptions._br_,
-    // eua
-    'eu': localeStringOptions._usa_,
-    'us': localeStringOptions._usa_ ,
-    'eua': localeStringOptions._usa_,
-    'usa': localeStringOptions._usa_ ,
-    'unitedstates': localeStringOptions._usa_,
-    'estadosunidos': localeStringOptions._usa_,
-}
+
 // const localeStringOptions = {
 //     countries : {
 //         //br
