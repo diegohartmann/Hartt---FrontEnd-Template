@@ -10,11 +10,16 @@ onWindowLoad(()=>{
 
     const title4 = getByQuerySel('h4');
     title4.innerHTML = " <s>_min + Math.random() * (_max - _min + 1)</s> --> <i>getRandomFloatBetween(_min, _max)</i> / <i>getRandomIntBetween(_min, _max)</i> ";
-    
-    const title5 = getByClass('fifthTextClass');
-    title5.inner = " <s>document.getElementsByClassName</s> --> <i>getByClass()</i>";
-    title5.innerHTML = " <s>document.getElementsByClassName</s> --> <i>getByClass()</i>";
 })
 
-// clog('This is a "console.log()" shorthand from lobo.js');
-clog( getCurrencyStringFrom(22000, 'bra', 'ESTADOSUNIDOS', 'name') );
+clog('This is a "console.log()" shorthand from lobo.js');
+clog(`
+
+Get simple currency strings (money format) of any number:
+
+getCurrencyStringFrom(100, 'usa', 'usa'): ${getCurrencyStringFrom(100, 'usa', 'usa', 'symbol')}
+
+getCurrencyStringFrom(100, 'bra', 'bra', 'name'): ${getCurrencyStringFrom(100, 'bra', 'bra', 'name')}
+
+
+`);
