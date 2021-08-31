@@ -13,13 +13,16 @@ onWindowLoad(()=>{
 })
 
 clog('This is a "console.log()" shorthand from lobo.js');
+
+
 clog(`
+------------------- SIMPLE MONEY FORMAT FROM ANY NUMBER ------------------------
 
-Get simple currency strings (money format) of any number:
+getCurrencyStringFrom(100, 'usa', 'usa') -----------------> ${getCurrencyStringFrom(100, 'usa', 'usa', 'symbol')}
 
-getCurrencyStringFrom(100, 'usa', 'usa'): ${getCurrencyStringFrom(100, 'usa', 'usa', 'symbol')}
+getCurrencyStringFrom(100, 'usa', 'bra', 'code') ---------> ${getCurrencyStringFrom(100, 'usa', 'bra', 'code')}
 
-getCurrencyStringFrom(100, 'bra', 'bra', 'name'): ${getCurrencyStringFrom(100, 'bra', 'bra', 'name')}
+getCurrencyStringFrom(100, 'bra', 'bra', 'name') ---------> ${getCurrencyStringFrom(100, 'bra', 'bra', 'name')}
 
-
+---------------------------------------------------------------------------------
 `);
