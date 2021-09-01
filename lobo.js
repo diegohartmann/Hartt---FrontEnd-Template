@@ -4,22 +4,22 @@ function onWindowLoad(_callback){
 function clog(_message) {
     console.log(_message);
 }
-function getById(_elementId){
+function elementById(_elementId){
     return document.getElementById(_elementId);
 }
-function getByClass(_elementClass){
+function elementByClass(_elementClass){
     return document.getElementsByClassName(_elementClass);
 }
-function getByQuerySel(_selector) {
+function elementByQuerySel(_selector) {
     return document.querySelector(_selector);
 }
-function getByQuerySelAll(_selector) {
+function elementByQuerySelAll(_selector) {
     return document.querySelectorAll(_selector);
 }
-function getRandomFloatBetween(_min, _max) {
+function randomFloatBetween(_min, _max) {
     return _min + Math.random() * (_max - _min + 1);
 }
-function getRandomIntBetween(_min, _max) {
+function randomIntBetween(_min, _max) {
     return Math.floor(randomFloatBetween(_min, _max));
 }
 function addClassTo(_element, _className) {
@@ -34,7 +34,7 @@ function removeClassFrom(_element, _class) {
 function setClassNameTo(_element, _className){
     _element.className = _className;
 }
-function getCurrencyStringFrom(_numberPrice, _currencyFormat = 'usa', _numberFormat = 'usa', _currencyDisplay = 'symbol' /*'symbol' / 'code' / 'name'*/) {
+function moneyFormatFrom(_numberPrice, _currencyFormat = 'usa', _numberFormat = 'usa', _currencyDisplay = 'symbol' /*'symbol' / 'code' / 'name'*/) {
     function finalNumberFormat(){
         return localeStringOptionsUsers(_numberFormat.toLowerCase())['country'];
     }
@@ -167,7 +167,7 @@ function getCurrencyStringFrom(_numberPrice, _currencyFormat = 'usa', _numberFor
     // zh-HK Hong Kong, traditional characters
     // zh-TW Taiwan, traditional characters
 // }
-function getNumberFromString(_string){
+function numberFromString(_string){
     return +((_string).trim())
 }
 function DomEl(_selector){
@@ -183,4 +183,7 @@ function DomEl(_selector){
     this.toggleClass = function(_class){
         this.element().classList.toggle(_class);
     }
+}
+function replaceAll(_string, _from, _to){
+    return _string.split(_from).join(_to);
 }
