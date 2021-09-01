@@ -22,16 +22,16 @@ function randomFloatBetween(_min, _max) {
 function randomIntBetween(_min, _max) {
     return Math.floor(randomFloatBetween(_min, _max));
 }
-function addClassTo(_element, _className) {
+function addClassTo(_element, _class = 'active') {
     _element.classList.add(_className);
 }
-function toggleClassOf(_element, _className) {
+function toggleClassOf(_element, _class = 'active') {
     _element.classList.toggle(_className);
 }
-function removeClassFrom(_element, _class) {
+function removeClassFrom(_element, _class = 'active') {
     _element.classList.remove(_class);
 }
-function setClassNameTo(_element, _className){
+function setClassNameTo(_element, _class = 'active'){
     _element.className = _className;
 }
 function moneyFormatFrom(_numberPrice, _currencyFormat = 'usa', _numberFormat = 'usa', _currencyDisplay = 'symbol' /*'symbol' / 'code' / 'name'*/) {
@@ -184,6 +184,31 @@ function DomEl(_selector){
         this.element().classList.toggle(_class);
     }
 }
-function replaceAll(_string, _from, _to){
+function replaceAllFrom(_string, _from, _to){
     return _string.split(_from).join(_to);
+}
+function arrayCloneFrom(_originalArray){
+    return _originalArray.slice();
+}
+function removeFirstItemFrom(_array){
+    return _array.shift();
+}
+function removeLastItemFrom(_array){
+    return _array.pop();
+}
+function addAtStartTo(_array, _el, _addOnlyArrayParameterValues){
+    if(Array.isArray(_el) && _addOnlyArrayParameterValues){
+        for (let i = _el.length - 1; i >= 0; i--) {
+            _array.unshift(_el[i]);        
+        }
+        return;
+    }
+    _array.unshift(_el);
+}
+function addAtEndTo(_array, _el, _addOnlyArrayParameterValues = false){
+    if(Array.isArray(_el) && _addOnlyArrayParameterValues){
+        _el.forEach(_e => {_array.push(_e);});
+        return;
+    }
+    _array.push(_el);
 }
