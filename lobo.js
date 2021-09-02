@@ -31,21 +31,19 @@ function toggleClassOf(_element, _class = 'active') {
 function removeClassFrom(_element, _class = 'active') {
     _element.classList.remove(_class);
 }
-function setClassNameTo(_element, _class = 'active'){
-    _element.className = _className;
-}
-Number.prototype.moneyformat = function (_currencyFormat, _numberFormat, _currencyDisplay){
+Number.prototype.moneyFormated = function (_currencyFormat, _numberFormat, _currencyDisplay){
     return moneyFormatFrom(this, _currencyFormat, _numberFormat, _currencyDisplay);
 }
 function moneyFormatFrom(_numberPrice, _currencyFormat = 'usa', _numberFormat = 'usa', _currencyDisplay = 'symbol' /*'symbol' / 'code' / 'name'*/) {
+    return _numberPrice.toLocaleString(finalNumberFormat(),{ style:"currency",currency:finalCurrencyCode(),currencyDisplay: _currencyDisplay.toLowerCase()});
     function finalNumberFormat(){
-        return localeStringOptionsUsers(_numberFormat.toLowerCase())['country'];
+        return parametersOptions(_numberFormat.toLowerCase())['country'];
     }
     function finalCurrencyCode(){
-        return localeStringOptionsUsers(_currencyFormat.toLowerCase())['currency'];
+        return parametersOptions(_currencyFormat.toLowerCase())['currency'];
     }
-    function localeStringOptionsUsers(_user){
-        const _users_ = {
+    function parametersOptions(_input){
+        const _inputs_ = {
             //br
             'br': localeStringOptions('_br_') ,
             'ptbr':localeStringOptions('_br_') ,
@@ -62,8 +60,7 @@ function moneyFormatFrom(_numberPrice, _currencyFormat = 'usa', _numberFormat = 
             'unitedstates': localeStringOptions('_usa_') ,
             'estadosunidos': localeStringOptions('_usa_') ,
         }
-        return _users_[_user];
-
+        return _inputs_[_input];
         //===============
         function localeStringOptions(_option){
             const _options_ = {
@@ -77,12 +74,7 @@ function moneyFormatFrom(_numberPrice, _currencyFormat = 'usa', _numberFormat = 
                 } ,
             }
             return _options_[_option];
-        }
-    }
-    return _numberPrice.toLocaleString(finalNumberFormat(),{ style:"currency",currency:finalCurrencyCode(),currencyDisplay: _currencyDisplay.toLowerCase()});
-}
-
-// const localeStringOptions = {
+            // const localeStringOptions = {
 //     countries : {
 //         //br
 //         br: 'pt-BR',
@@ -169,79 +161,42 @@ function moneyFormatFrom(_numberPrice, _currencyFormat = 'usa', _numberFormat = 
     // zh-HK Hong Kong, traditional characters
     // zh-TW Taiwan, traditional characters
 // }
+        }
+    }
+}
 String.prototype.numbered = function(){
-    return +((_string).trim())
+    return +(this.trim())
 }
-// function numberFromString(_string){
-//     return +((_string).trim())
-// }
 String.prototype.replacedAll = function(_from, _to){
-    return _string.split(_from).join(_to);
+    return this.split(_from).join(_to);
 }
-// function replaceAllFrom(_string, _from, _to){
-//     return _string.split(_from).join(_to);
-// }
-Array.prototype.clone = function(){
+Array.prototype.cloned = function(){
     return this.slice();
 }
-// function arrayCloneFrom(_originalArray){
-//     return _originalArray.slice();
-// }
-Array.prototype.addAtStart = function (_el){
+Array.prototype.addToStart = function (_el){
     if(Array.isArray(_el)){
-        for (let i = _el.length - 1; i >= 0; i--) {
-            this.unshift(_el[i]);        
-        }
+        _el.reverse().forEach(_e => {this.unshift(_e)});
         return;
     }
     this.unshift(_el);
 }
-// function addAtStartTo(_array, _el){
-//     if(Array.isArray(_el)){
-//         for (let i = _el.length - 1; i >= 0; i--) {
-//             _array.unshift(_el[i]);        
-//         }
-//         return;
-//     }
-//     _array.unshift(_el);
-// }
-Array.prototype.addAtEnd = function(_el){
+Array.prototype.addToEnd = function(_el){
     if(Array.isArray(_el)){
-        _el.forEach(_e => {this.push(_e);});
+        _el.forEach(_e => {this.push(_e)});
         return;
     }
     this.push(_el);
 }
-// function addAtEndTo(_array, _el){
-//     if(Array.isArray(_el)){
-//         _el.forEach(_e => {_array.push(_e);});
-//         return;
-//     }
-//     _array.push(_el);
-// }
-Array.prototype.biggestNumber = function() {
+Array.prototype.biggestNum = function() {
     return this.reduce((_anterior, _current)=>{
         return _anterior > _current? _anterior : _current;
     })
 }
-// function biggestNumberFrom(_array){
-//     return _array.reduce((_anterior, _current)=>{
-//         return _anterior > _current? _anterior : _current;
-//     })
-// }
-Array.prototype.smallestNumber = function() {
+Array.prototype.smallestNum = function() {
     return this.reduce((_anterior, _current)=>{
-        return _anterior < _current? _anterior : _current;
+        return _anterior < _current ? _anterior : _current;
     })
 }
-// function smallestNumberFrom(_array){
-//     return _array.reduce((_anterior, _current)=>{
-//         return _anterior < _current? _anterior : _current;
-//     })
-// }
 Number.prototype.isEven = function(){
     return (this)%2 == 0;
 }
-// function isEven(_n){
-//     return (_n)%2 == 0; 
-// }
