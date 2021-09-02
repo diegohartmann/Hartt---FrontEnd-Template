@@ -4,7 +4,7 @@ String.prototype.replacedAll=function(_from,_to){return this.split(_from).join(_
 //#endregion STRING
 
 //#region ARRAYS ==========================================================================================================================================================================================
-Array.prototype.cloned=function(){return this.slice()}
+Array.prototype.clone=function(){return this.slice()}
 Array.prototype.addToStart=function(_el){if(Array.isArray(_el)){_el.reverse().forEach(_e=>{this.unshift(_e)});return}this.unshift(_el)}
 Array.prototype.addToEnd=function(_el){if(Array.isArray(_el)){_el.forEach(_e=>{this.push(_e)});return}this.push(_el)}
 Array.prototype.biggestNum=function(){return this.reduce((_anterior,_current)=>{return _anterior>_current?_anterior:_current})}
@@ -23,15 +23,57 @@ function getById(_elementId){return document.getElementById(_elementId)}
 function getByClass(_elementClass){return document.getElementsByClassName(_elementClass)}
 function getBySelector(_selector){return document.querySelector(_selector)}
 function getBySelectorAll(_selector){return document.querySelectorAll(_selector)}
-function addClassTo(_element,_class='active'){_element.classList.add(_className)}
-function toggleClassOf(_element,_class='active'){_element.classList.toggle(_className)}
-function removeClassFrom(_element,_class='active'){_element.classList.remove(_class)}
-//#endregion HTML-ELEMENTS ==========================================================================================================================================================================================
+Node.prototype.addClass=function(_class='active'){this.classList.add(_class)}
+Node.prototype.toggleClass=function(_class='active'){this.classList.toggle(_class)}
+Node.prototype.removeClass=function(_class='active'){this.classList.remove(_class)}
+//#endregion HTML-ELEMENTS 
+
+//#region EVENTS ====================================================================================================================================================================================================
+Node.prototype.onRightClick=function(_callback){this.addEventListener('contextmenu',_callback)}
+Node.prototype.onClick=function(_callback){this.addEventListener('click',_callback)}
+Node.prototype.onDoubleClick=function(_callback){this.addEventListener('dblclick',_callback)}
+Node.prototype.onLoad=function(_callback){this.addEventListener('load',_callback)}
+Node.prototype.onDrag=function(_callback){this.addEventListener('drag',_callback)}
+Node.prototype.onDragEnd=function(_callback){this.addEventListener('dragend',_callback)}
+Node.prototype.onDragEnter=function(_callback){this.addEventListener('dragenter',_callback)}
+Node.prototype.onDragLeave=function(_callback){this.addEventListener('dragleave',_callback)}
+Node.prototype.onDragOver=function(_callback){this.addEventListener('dragover',_callback)}
+Node.prototype.onDragStart=function(_callback){this.addEventListener('dragstart',_callback)}
+Node.prototype.onDragDrop=function(_callback){this.addEventListener('drop',_callback)}
+Node.prototype.onFocus=function(_callback){this.addEventListener('focus',_callback)}
+Node.prototype.onUserInput=function(_callback){this.addEventListener('input',_callback)}
+Node.prototype.onKeyDown=function(_callback){this.addEventListener('keydown',_callback)}
+Node.prototype.onKeyUp=function(_callback){this.addEventListener('keyup',_callback)}
+Node.prototype.onMouseDown=function(_callback){this.addEventListener('mousedown',_callback)}
+Node.prototype.onMouseUp=function(_callback){this.addEventListener('mouseup',_callback)}
+Node.prototype.onMouseEnter=function(_callback){this.addEventListener('mouseenter',_callback)}
+Node.prototype.onMouseLeave=function(_callback){this.addEventListener('mouseleave',_callback)}
+Node.prototype.onMouseMove=function(_callback){this.addEventListener('mousemove',_callback)}
+Node.prototype.onMouseOver=function(_callback){this.addEventListener('mouseover',_callback)}
+Node.prototype.onMouseOut=function(_callback){this.addEventListener('mouseout',_callback)}
+Node.prototype.onMouseWheel=function(_callback){this.addEventListener('wheel',_callback)}
+Node.prototype.onCopy=function(_callback){this.addEventListener('copy',_callback)}
+Node.prototype.onCut=function(_callback){this.addEventListener('cut',_callback)}
+Node.prototype.onPaste=function(_callback){this.addEventListener('paste',_callback)}
+Node.prototype.onScroll=function(_callback){this.addEventListener('scroll',_callback)}
+Node.prototype.onSearch=function(_callback){this.addEventListener('search',_callback)}
+Node.prototype.onSelect=function(_callback){this.addEventListener('select',_callback)}
+Node.prototype.onSubmit=function(_callback){this.addEventListener('select',_callback)}
+Node.prototype.onTouchStart=function(_callback){this.addEventListener('touchstart',_callback)}
+Node.prototype.onTouchMove=function(_callback){this.addEventListener('touchmove',_callback)}
+Node.prototype.onTouchEnd=function(_callback){this.addEventListener('touchend',_callback)}
+Node.prototype.onTouchCancel=function(_callback){this.addEventListener('touchcancel',_callback)}
+//#endregion EVENTS
 
 //#region BETTER-WORKFLOW ==========================================================================================================================================================================================
 function onWindowLoad(_callback){window.addEventListener('load', _callback)}
+function onWindowOnline(_callback){window.addEventListener('online', _callback)}
+function onWindowOffline(_callback){window.addEventListener('offline', _callback)}
+function onWindowScroll(_callback){window.addEventListener('scroll', _callback)}
+function onPageHide(_callback){window.addEventListener('pagehide', _callback)}
+function onPageShow(_callback){window.addEventListener('pageshow', _callback)}
 function clog(_message){console.log(_message)}
-//#endregion BETTER-WORKFLOW ==========================================================================================================================================================================================
+//#endregion BETTER-WORKFLOW
 
 //#region HELPER-FUNCTIONS ==========================================================================================================================================================================================
 function moneyFormatFrom(_numberPrice,_currencyFormat='usa',_numberFormat='usa', _currencyDisplay = 'symbol' /*'symbol' / 'code' / 'name'*/) {
@@ -160,4 +202,4 @@ function moneyFormatFrom(_numberPrice,_currencyFormat='usa',_numberFormat='usa',
         }
     }
 }
-//#endregion HELPER-FUNCTIONS ==========================================================================================================================================================================================
+//#endregion HELPER-FUNCTIONS
