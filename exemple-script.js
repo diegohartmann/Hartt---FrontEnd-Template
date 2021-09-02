@@ -14,10 +14,21 @@ onWindowLoad(()=>{
     title4.onClick((e)=>{
         e.currentTarget.toggleClass('a')
     })
+    title4.append(   `
+                        <section>
+                            <ul>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </section>
+                        `)
 })
 
 clog('This is a "console.log()" shorthand from lobo.js');
 
+clog((100).formatedToMoney('bra', 'bra','code'))
+clog(moneyFormatFrom(100,'bra', 'bra', 'symbol'))
 
 clog(`
 ------------------- SIMPLE MONEY FORMAT FROM ANY NUMBER ------------------------
@@ -31,8 +42,3 @@ moneyFormatFrom(100, 'bra', 'bra', 'name') ---------> ${moneyFormatFrom(100, 'br
 ---------------------------------------------------------------------------------
 `);
 
-clog(
-    `
-
-    `
-)
