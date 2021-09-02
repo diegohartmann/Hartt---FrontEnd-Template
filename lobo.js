@@ -4,16 +4,16 @@ function onWindowLoad(_callback){
 function clog(_message) {
     console.log(_message);
 }
-function elementById(_elementId){
+function getById(_elementId){
     return document.getElementById(_elementId);
 }
-function elementByClass(_elementClass){
+function getByClass(_elementClass){
     return document.getElementsByClassName(_elementClass);
 }
-function elementByQuerySel(_selector) {
+function getBySelector(_selector) {
     return document.querySelector(_selector);
 }
-function elementByQuerySelAll(_selector) {
+function getBySelectorAll(_selector) {
     return document.querySelectorAll(_selector);
 }
 function randomFloatBetween(_min, _max) {
@@ -33,6 +33,9 @@ function removeClassFrom(_element, _class = 'active') {
 }
 function setClassNameTo(_element, _class = 'active'){
     _element.className = _className;
+}
+Number.prototype.moneyformat = function (_currencyFormat, _numberFormat, _currencyDisplay){
+    return moneyFormatFrom(this, _currencyFormat, _numberFormat, _currencyDisplay);
 }
 function moneyFormatFrom(_numberPrice, _currencyFormat = 'usa', _numberFormat = 'usa', _currencyDisplay = 'symbol' /*'symbol' / 'code' / 'name'*/) {
     function finalNumberFormat(){
@@ -77,7 +80,6 @@ function moneyFormatFrom(_numberPrice, _currencyFormat = 'usa', _numberFormat = 
         }
     }
     return _numberPrice.toLocaleString(finalNumberFormat(),{ style:"currency",currency:finalCurrencyCode(),currencyDisplay: _currencyDisplay.toLowerCase()});
-  
 }
 
 // const localeStringOptions = {
@@ -167,36 +169,28 @@ function moneyFormatFrom(_numberPrice, _currencyFormat = 'usa', _numberFormat = 
     // zh-HK Hong Kong, traditional characters
     // zh-TW Taiwan, traditional characters
 // }
+String.prototype.toNumber = function(){
+    return numberFromString(this);
+}
 function numberFromString(_string){
     return +((_string).trim())
 }
-function DomEl(_selector){
-    this.element = function(){
-        return document.querySelector(_selector);
-    }
-    this.addClass = function(_class){
-        this.element().classList.add(_class);
-    }
-    this.removeClass = function (_class){
-        this.element().classList.remove(_class);
-    }
-    this.toggleClass = function(_class){
-        this.element().classList.toggle(_class);
-    }
+String.prototype.replaceAll = function(_from, _to){
+    return replaceAllFrom(this, _from, _to);
 }
 function replaceAllFrom(_string, _from, _to){
     return _string.split(_from).join(_to);
 }
+Array.prototype.clone = function(){
+    return arrayCloneFrom(this);
+}
 function arrayCloneFrom(_originalArray){
     return _originalArray.slice();
 }
-function removeFirstItemFrom(_array){
-    return _array.shift();
+Array.prototype.addAtStart = function (_el, _addOnlyArrayParameterValues){
+    addAtStartTo(this, _el, _addOnlyArrayParameterValues);
 }
-function removeLastItemFrom(_array){
-    return _array.pop();
-}
-function addAtStartTo(_array, _el, _addOnlyArrayParameterValues){
+function addAtStartTo(_array, _el, _addOnlyArrayParameterValues = false){
     if(Array.isArray(_el) && _addOnlyArrayParameterValues){
         for (let i = _el.length - 1; i >= 0; i--) {
             _array.unshift(_el[i]);        
@@ -205,10 +199,29 @@ function addAtStartTo(_array, _el, _addOnlyArrayParameterValues){
     }
     _array.unshift(_el);
 }
+Array.prototype.addAtEnd = function(_el, _addOnlyArrayParameterValues){
+    addAtEndTo(this, _el, _addOnlyArrayParameterValues);
+}
 function addAtEndTo(_array, _el, _addOnlyArrayParameterValues = false){
     if(Array.isArray(_el) && _addOnlyArrayParameterValues){
         _el.forEach(_e => {_array.push(_e);});
         return;
     }
     _array.push(_el);
+}
+Array.prototype.biggestNumber = function() {
+    return biggestNumberFrom(this);
+}
+function biggestNumberFrom(_array){
+    return _array.reduce((_anterior, _current)=>{
+        return _anterior > _current? _anterior : _current;
+    })
+}
+Array.prototype.smallestNumber = function() {
+    return smallestNumberFrom(this);
+}
+function smallestNumberFrom(_array){
+    return _array.reduce((_anterior, _current)=>{
+        return _anterior < _current? _anterior : _current;
+    })
 }
