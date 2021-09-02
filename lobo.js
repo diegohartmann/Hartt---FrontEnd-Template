@@ -169,59 +169,79 @@ function moneyFormatFrom(_numberPrice, _currencyFormat = 'usa', _numberFormat = 
     // zh-HK Hong Kong, traditional characters
     // zh-TW Taiwan, traditional characters
 // }
-String.prototype.toNumber = function(){
-    return numberFromString(this);
-}
-function numberFromString(_string){
+String.prototype.numbered = function(){
     return +((_string).trim())
 }
-String.prototype.replaceAll = function(_from, _to){
-    return replaceAllFrom(this, _from, _to);
-}
-function replaceAllFrom(_string, _from, _to){
+// function numberFromString(_string){
+//     return +((_string).trim())
+// }
+String.prototype.replacedAll = function(_from, _to){
     return _string.split(_from).join(_to);
 }
+// function replaceAllFrom(_string, _from, _to){
+//     return _string.split(_from).join(_to);
+// }
 Array.prototype.clone = function(){
-    return arrayCloneFrom(this);
+    return this.slice();
 }
-function arrayCloneFrom(_originalArray){
-    return _originalArray.slice();
-}
-Array.prototype.addAtStart = function (_el, _addOnlyArrayParameterValues){
-    addAtStartTo(this, _el, _addOnlyArrayParameterValues);
-}
-function addAtStartTo(_array, _el, _addOnlyArrayParameterValues = false){
-    if(Array.isArray(_el) && _addOnlyArrayParameterValues){
+// function arrayCloneFrom(_originalArray){
+//     return _originalArray.slice();
+// }
+Array.prototype.addAtStart = function (_el){
+    if(Array.isArray(_el)){
         for (let i = _el.length - 1; i >= 0; i--) {
-            _array.unshift(_el[i]);        
+            this.unshift(_el[i]);        
         }
         return;
     }
-    _array.unshift(_el);
+    this.unshift(_el);
 }
-Array.prototype.addAtEnd = function(_el, _addOnlyArrayParameterValues){
-    addAtEndTo(this, _el, _addOnlyArrayParameterValues);
-}
-function addAtEndTo(_array, _el, _addOnlyArrayParameterValues = false){
-    if(Array.isArray(_el) && _addOnlyArrayParameterValues){
-        _el.forEach(_e => {_array.push(_e);});
+// function addAtStartTo(_array, _el){
+//     if(Array.isArray(_el)){
+//         for (let i = _el.length - 1; i >= 0; i--) {
+//             _array.unshift(_el[i]);        
+//         }
+//         return;
+//     }
+//     _array.unshift(_el);
+// }
+Array.prototype.addAtEnd = function(_el){
+    if(Array.isArray(_el)){
+        _el.forEach(_e => {this.push(_e);});
         return;
     }
-    _array.push(_el);
+    this.push(_el);
 }
+// function addAtEndTo(_array, _el){
+//     if(Array.isArray(_el)){
+//         _el.forEach(_e => {_array.push(_e);});
+//         return;
+//     }
+//     _array.push(_el);
+// }
 Array.prototype.biggestNumber = function() {
-    return biggestNumberFrom(this);
-}
-function biggestNumberFrom(_array){
-    return _array.reduce((_anterior, _current)=>{
+    return this.reduce((_anterior, _current)=>{
         return _anterior > _current? _anterior : _current;
     })
 }
+// function biggestNumberFrom(_array){
+//     return _array.reduce((_anterior, _current)=>{
+//         return _anterior > _current? _anterior : _current;
+//     })
+// }
 Array.prototype.smallestNumber = function() {
-    return smallestNumberFrom(this);
-}
-function smallestNumberFrom(_array){
-    return _array.reduce((_anterior, _current)=>{
+    return this.reduce((_anterior, _current)=>{
         return _anterior < _current? _anterior : _current;
     })
 }
+// function smallestNumberFrom(_array){
+//     return _array.reduce((_anterior, _current)=>{
+//         return _anterior < _current? _anterior : _current;
+//     })
+// }
+Number.prototype.isEven = function(){
+    return (this)%2 == 0;
+}
+// function isEven(_n){
+//     return (_n)%2 == 0; 
+// }
