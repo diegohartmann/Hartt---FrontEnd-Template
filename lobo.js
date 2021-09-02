@@ -1,47 +1,43 @@
-function onWindowLoad(_callback){
-    window.addEventListener('load', _callback);
-}
-function clog(_message) {
-    console.log(_message);
-}
-function getById(_elementId){
-    return document.getElementById(_elementId);
-}
-function getByClass(_elementClass){
-    return document.getElementsByClassName(_elementClass);
-}
-function getBySelector(_selector) {
-    return document.querySelector(_selector);
-}
-function getBySelectorAll(_selector) {
-    return document.querySelectorAll(_selector);
-}
-function randomFloatBetween(_min, _max) {
-    return _min + Math.random() * (_max - _min + 1);
-}
-function randomIntBetween(_min, _max) {
-    return Math.floor(randomFloatBetween(_min, _max));
-}
-function addClassTo(_element, _class = 'active') {
-    _element.classList.add(_className);
-}
-function toggleClassOf(_element, _class = 'active') {
-    _element.classList.toggle(_className);
-}
-function removeClassFrom(_element, _class = 'active') {
-    _element.classList.remove(_class);
-}
-Number.prototype.moneyFormated = function (_currencyFormat, _numberFormat, _currencyDisplay){
-    return moneyFormatFrom(this, _currencyFormat, _numberFormat, _currencyDisplay);
-}
-function moneyFormatFrom(_numberPrice, _currencyFormat = 'usa', _numberFormat = 'usa', _currencyDisplay = 'symbol' /*'symbol' / 'code' / 'name'*/) {
+//#region STRINGS ==========================================================================================================================================================================================
+String.prototype.numbered=function(){return +(this.trim())}
+String.prototype.replacedAll=function(_from,_to){return this.split(_from).join(_to)}
+//#endregion STRING
+
+//#region ARRAYS ==========================================================================================================================================================================================
+Array.prototype.cloned=function(){return this.slice()}
+Array.prototype.addToStart=function(_el){if(Array.isArray(_el)){_el.reverse().forEach(_e=>{this.unshift(_e)});return}this.unshift(_el)}
+Array.prototype.addToEnd=function(_el){if(Array.isArray(_el)){_el.forEach(_e=>{this.push(_e)});return}this.push(_el)}
+Array.prototype.biggestNum=function(){return this.reduce((_anterior,_current)=>{return _anterior>_current?_anterior:_current})}
+Array.prototype.smallestNum=function(){return this.reduce((_anterior,_current)=>{return _anterior<_current?_anterior:_current})}
+//#endregion ARRAY
+
+//#region NUMBERS ==========================================================================================================================================================================================
+Number.prototype.isEven=function(){return (this)%2==0}
+Number.prototype.formatedToMoney=function(_currencyFormat,_numberFormat,_currencyDisplay){return moneyFormatFrom(this,_currencyFormat,_numberFormat,_currencyDisplay)}
+function randomIntBetween(_min,_max){return Math.floor(randomFloatBetween(_min, _max))}
+function randomFloatBetween(_min,_max){return _min + Math.random() * (_max - _min + 1)}
+//#endregion NUMBER
+
+//#region HTML-ELEMENTS ==========================================================================================================================================================================================
+function getById(_elementId){return document.getElementById(_elementId)}
+function getByClass(_elementClass){return document.getElementsByClassName(_elementClass)}
+function getBySelector(_selector){return document.querySelector(_selector)}
+function getBySelectorAll(_selector){return document.querySelectorAll(_selector)}
+function addClassTo(_element,_class='active'){_element.classList.add(_className)}
+function toggleClassOf(_element,_class='active'){_element.classList.toggle(_className)}
+function removeClassFrom(_element,_class='active'){_element.classList.remove(_class)}
+//#endregion HTML-ELEMENTS ==========================================================================================================================================================================================
+
+//#region BETTER-WORKFLOW ==========================================================================================================================================================================================
+function onWindowLoad(_callback){window.addEventListener('load', _callback)}
+function clog(_message){console.log(_message)}
+//#endregion BETTER-WORKFLOW ==========================================================================================================================================================================================
+
+//#region HELPER-FUNCTIONS ==========================================================================================================================================================================================
+function moneyFormatFrom(_numberPrice,_currencyFormat='usa',_numberFormat='usa', _currencyDisplay = 'symbol' /*'symbol' / 'code' / 'name'*/) {
     return _numberPrice.toLocaleString(finalNumberFormat(),{ style:"currency",currency:finalCurrencyCode(),currencyDisplay: _currencyDisplay.toLowerCase()});
-    function finalNumberFormat(){
-        return parametersOptions(_numberFormat.toLowerCase())['country'];
-    }
-    function finalCurrencyCode(){
-        return parametersOptions(_currencyFormat.toLowerCase())['currency'];
-    }
+    function finalNumberFormat(){return parametersOptions(_numberFormat.toLowerCase())['country']}
+    function finalCurrencyCode(){return parametersOptions(_currencyFormat.toLowerCase())['currency']}
     function parametersOptions(_input){
         const _inputs_ = {
             //br
@@ -164,39 +160,4 @@ function moneyFormatFrom(_numberPrice, _currencyFormat = 'usa', _numberFormat = 
         }
     }
 }
-String.prototype.numbered = function(){
-    return +(this.trim())
-}
-String.prototype.replacedAll = function(_from, _to){
-    return this.split(_from).join(_to);
-}
-Array.prototype.cloned = function(){
-    return this.slice();
-}
-Array.prototype.addToStart = function (_el){
-    if(Array.isArray(_el)){
-        _el.reverse().forEach(_e => {this.unshift(_e)});
-        return;
-    }
-    this.unshift(_el);
-}
-Array.prototype.addToEnd = function(_el){
-    if(Array.isArray(_el)){
-        _el.forEach(_e => {this.push(_e)});
-        return;
-    }
-    this.push(_el);
-}
-Array.prototype.biggestNum = function() {
-    return this.reduce((_anterior, _current)=>{
-        return _anterior > _current? _anterior : _current;
-    })
-}
-Array.prototype.smallestNum = function() {
-    return this.reduce((_anterior, _current)=>{
-        return _anterior < _current ? _anterior : _current;
-    })
-}
-Number.prototype.isEven = function(){
-    return (this)%2 == 0;
-}
+//#endregion HELPER-FUNCTIONS ==========================================================================================================================================================================================
