@@ -1,81 +1,102 @@
-//#region STRINGS ==========================================================================================================================================================================================
-String.prototype.numbered=function(){return +(this.trim())}
-String.prototype.replacedAll=function(_from,_to){return this.split(_from).join(_to)}
-//#endregion STRING
-//#region ARRAYS ==========================================================================================================================================================================================
-Array.prototype.clone=function(){return this.slice()}
-Array.prototype.addToStart=function(_el){if(Array.isArray(_el)){_el.reverse().forEach(_e=>{this.unshift(_e)});return}this.unshift(_el)}
-Array.prototype.addToEnd=function(_el){if(Array.isArray(_el)){_el.forEach(_e=>{this.push(_e)});return}this.push(_el)}
-Array.prototype.biggestNum=function(){return this.reduce((_anterior,_current)=>{return _anterior>_current?_anterior:_current})}
-Array.prototype.smallestNum=function(){return this.reduce((_anterior,_current)=>{return _anterior<_current?_anterior:_current})}
-//#endregion ARRAY
-//#region NUMBERS ==========================================================================================================================================================================================
-Number.prototype.isEven=function(){return(this)%2==0}
-Number.prototype.formatedToMoney=function(_currencyFormat,_numberFormat,_currencyDisplay){return moneyFormatFrom(this,_currencyFormat,_numberFormat,_currencyDisplay)}
-function randomIntBetween(_min,_max){return Math.floor(randomFloatBetween(_min,_max))}
-function randomFloatBetween(_min,_max){return _min+Math.random()*(_max-_min+1)}
-//#endregion NUMBER
-//#region HTML-ELEMENTS ==========================================================================================================================================================================================
-function getById(_elementId){return document.getElementById(_elementId)}
-function getByClass(_elementClass){return document.getElementsByClassName(_elementClass)}
-function getBySelector(_selector){return document.querySelector(_selector)}
-function getBySelectorAll(_selector){return document.querySelectorAll(_selector)}
-Node.prototype.addClass=function(_class='active'){this.classList.add(_class)}
-Node.prototype.toggleClass=function(_class='active'){this.classList.toggle(_class)}
-Node.prototype.removeClass=function(_class='active'){this.classList.remove(_class)}
-//#endregion HTML-ELEMENTS 
-//#region EVENTS ====================================================================================================================================================================================================
-Node.prototype.onRightClick=function(_callback){this.addEventListener('contextmenu',_callback)}
-Node.prototype.onClick=function(_callback){this.addEventListener('click',_callback)}
-Node.prototype.onDoubleClick=function(_callback){this.addEventListener('dblclick',_callback)}
-Node.prototype.onLoad=function(_callback){this.addEventListener('load',_callback)}
-Node.prototype.onDrag=function(_callback){this.addEventListener('drag',_callback)}
-Node.prototype.onDragEnd=function(_callback){this.addEventListener('dragend',_callback)}
-Node.prototype.onDragEnter=function(_callback){this.addEventListener('dragenter',_callback)}
-Node.prototype.onDragLeave=function(_callback){this.addEventListener('dragleave',_callback)}
-Node.prototype.onDragOver=function(_callback){this.addEventListener('dragover',_callback)}
-Node.prototype.onDragStart=function(_callback){this.addEventListener('dragstart',_callback)}
-Node.prototype.onDragDrop=function(_callback){this.addEventListener('drop',_callback)}
-Node.prototype.onFocus=function(_callback){this.addEventListener('focus',_callback)}
-Node.prototype.onUserInput=function(_callback){this.addEventListener('input',_callback)}
-Node.prototype.onKeyDown=function(_callback){this.addEventListener('keydown',_callback)}
-Node.prototype.onKeyUp=function(_callback){this.addEventListener('keyup',_callback)}
-Node.prototype.onMouseDown=function(_callback){this.addEventListener('mousedown',_callback)}
-Node.prototype.onMouseUp=function(_callback){this.addEventListener('mouseup',_callback)}
-Node.prototype.onMouseEnter=function(_callback){this.addEventListener('mouseenter',_callback)}
-Node.prototype.onMouseLeave=function(_callback){this.addEventListener('mouseleave',_callback)}
-Node.prototype.onMouseMove=function(_callback){this.addEventListener('mousemove',_callback)}
-Node.prototype.onMouseOver=function(_callback){this.addEventListener('mouseover',_callback)}
-Node.prototype.onMouseOut=function(_callback){this.addEventListener('mouseout',_callback)}
-Node.prototype.onMouseWheel=function(_callback){this.addEventListener('wheel',_callback)}
-Node.prototype.onCopy=function(_callback){this.addEventListener('copy',_callback)}
-Node.prototype.onCut=function(_callback){this.addEventListener('cut',_callback)}
-Node.prototype.onPaste=function(_callback){this.addEventListener('paste',_callback)}
-Node.prototype.onScroll=function(_callback){this.addEventListener('scroll',_callback)}
-Node.prototype.onSearch=function(_callback){this.addEventListener('search',_callback)}
-Node.prototype.onSelect=function(_callback){this.addEventListener('select',_callback)}
-Node.prototype.onSubmit=function(_callback){this.addEventListener('select',_callback)}
-Node.prototype.onTouchStart=function(_callback){this.addEventListener('touchstart',_callback)}
-Node.prototype.onTouchMove=function(_callback){this.addEventListener('touchmove',_callback)}
-Node.prototype.onTouchEnd=function(_callback){this.addEventListener('touchend',_callback)}
-Node.prototype.onTouchCancel=function(_callback){this.addEventListener('touchcancel',_callback)}
-//#endregion EVENTS
-//#region BETTER-WORKFLOW ==========================================================================================================================================================================================
-function onWindowLoad(_callback){window.addEventListener('load',_callback)}
-function onWindowOnline(_callback){window.addEventListener('online',_callback)}
-function onWindowOffline(_callback){window.addEventListener('offline',_callback)}
-function onWindowScroll(_callback){window.addEventListener('scroll',_callback)}
-function onPageHide(_callback){window.addEventListener('pagehide',_callback)}
-function onPageShow(_callback){window.addEventListener('pageshow',_callback)}
-function clog(_message){console.log(_message)}
-//#endregion BETTER-WORKFLOW
+export default function L (){
+    return {
+
+        //#region STRINGS ==========================================================================================================================================================================================
+        // String.prototype.numbered:function(){return +(this.trim())}
+        toNumber:function(_string){return +(_string.trim())},
+        // String.prototype.replacedAll:function(_from,_to){return this.split(_from).join(_to)}
+        replacedAllFrom:function(_string, _from, _to){return _string.split(_from).join(_to)},
+        //#endregion STRING
+        
+        
+        //#region ARRAYS ==========================================================================================================================================================================================
+        arrayCloneFrom:function(_array){return _array.slice()},
+        addToStartOfArray:function(_originalArray, _el){if(Array.isArray(_el)){_el.reverse().forEach(_e=>{_originalArray.unshift(_e)});return}_originalArray.unshift(_el)},
+        addToEndOfArray:function(originalArray, _el){if(Array.isArray(_el)){_el.forEach(_e=>{originalArray.push(_e)});return}originalArray.push(_el)},
+        biggestNumInArray:function(_array){return _array.reduce ((_anterior,_current)=>{return _anterior>_current?_anterior:_current})},
+        smallestNumInArray:function(_array){return _array.reduce((_anterior,_current)=>{return _anterior<_current?_anterior:_current})},
+        //#endregion ARRAY
+        
+        //#region NUMBERS ==========================================================================================================================================================================================
+        isEven:function(_n){return(_n)%2==0},
+        formatedToMoney:function(_n,_currencyFormat,_numberFormat,_currencyDisplay){return moneyFormatFrom(_n,_currencyFormat,_numberFormat,_currencyDisplay)},
+        randomFloatBetween:function(_min,_max){return _min+Math.random()*(_max-_min+1)},
+        randomIntBetween:function(_min,_max){return Math.floor(randomFloatBetween(_min,_max))},
+        //#endregion NUMBER
+        
+        
+        //#region HTML-ELEMENTS ==========================================================================================================================================================================================
+        getById:function(_parent = document, _elementId){return _parent.getElementById(_elementId)},
+        getByClass:function (_parent = document, _elementClass){return _parent.getElementsByClassName(_elementClass)},
+        getBySelector:function(_parent = document, _selector){return _parent.querySelector(_selector)},
+        getBySelectorAll:function(_parent = document, _selector){return _parent.querySelectorAll(_selector)},
+        createNode:function(_htmlString){const placeholder=document.createElement('div');placeholder.innerHTML=_html;return placeholder.firstElementChild},
+        appendNode:function(_el,_htmlString){_el.appendChild(this.createNode(_htmlString))},
+        addClass:function(_el,_class='active'){_el.classList.add(_class)},
+        toggleClass:function(_el,_class='active'){_el.classList.toggle(_class)},
+        removeClass:function(_el,_class='active'){_el.classList.remove(_class)},
+        swapNodes:function(_node1,_node2){swapNodesHelper(_node1,_node2)},
+        //#endregion HTML-ELEMENTS 
+        
+        //#region EVENTS ====================================================================================================================================================================================================
+        onRightClick:function(_node,_callback){_node.addEventListener('contextmenu',_callback)},
+        onClick:function(_node,_callback){_node.addEventListener('click',_callback)},
+        onDoubleClick:function(_node,_callback){_node.addEventListener('dblclick',_callback)},
+        onLoad:function(_node,_callback){_node.addEventListener('load',_callback)},
+        onDrag:function(_node,_callback){_node.addEventListener('drag',_callback)},
+        onDragEnd:function(_node,_callback){_node.addEventListener('dragend',_callback)},
+        onDragEnter:function(_node,_callback){_node.addEventListener('dragenter',_callback)},
+        onDragLeave:function(_node,_callback){_node.addEventListener('dragleave',_callback)},
+        onDragOver:function(_node,_callback){_node.addEventListener('dragover',_callback)},
+        onDragStart:function(_node,_callback){_node.addEventListener('dragstart',_callback)},
+        onDragDrop:function(_node,_callback){_node.addEventListener('drop',_callback)},
+        onFocus:function(_node,_callback){_node.addEventListener('focus',_callback)},
+        onUserInput:function(_node,_callback){_node.addEventListener('input',_callback)},
+        onKeyDown:function(_node,_callback){_node.addEventListener('keydown',_callback)},
+        onKeyUp:function(_node,_callback){_node.addEventListener('keyup',_callback)},
+        onMouseDown:function(_node,_callback){_node.addEventListener('mousedown',_callback)},
+        onMouseUp:function(_node,_callback){_node.addEventListener('mouseup',_callback)},
+        onMouseEnter:function(_node,_callback){_node.addEventListener('mouseenter',_callback)},
+        onMouseLeave:function(_node,_callback){_node.addEventListener('mouseleave',_callback)},
+        onMouseMove:function(_node,_callback){_node.addEventListener('mousemove',_callback)},
+        onMouseOver:function(_node,_callback){_node.addEventListener('mouseover',_callback)},
+        onMouseOut:function(_node,_callback){_node.addEventListener('mouseout',_callback)},
+        onMouseWheel:function(_node,_callback){_node.addEventListener('wheel',_callback)},
+        onCopy:function(_node,_callback){_node.addEventListener('copy',_callback)},
+        onCut:function(_node,_callback){_node.addEventListener('cut',_callback)},
+        onPaste:function(_node,_callback){_node.addEventListener('paste',_callback)},
+        onScroll:function(_node,_callback){_node.addEventListener('scroll',_callback)},
+        onSearch:function(_node,_callback){_node.addEventListener('search',_callback)},
+        onSelect:function(_node,_callback){_node.addEventListener('select',_callback)},
+        onSubmit:function(_node,_callback){_node.addEventListener('submit',_callback)},
+        onTouchStart:function(_node,_callback){_node.addEventListener('touchstart',_callback)},
+        onTouchMove:function(_node,_callback){_node.addEventListener('touchmove',_callback)},
+        onTouchEnd:function(_node,_callback){_node.addEventListener('touchend',_callback)},
+        onTouchCancel:function(_callback){this.addEventListener('touchcancel',__callback)},
+        //#endregion EVENTS
+
+        //#region BETTER-WORKFLOW ==========================================================================================================================================================================================
+        getTypeOf:function(_el){return Object.prototype.toString.call(_el).replace('[object ','').replace(']','')},
+        onWindowLoad:function(_callback){window.addEventListener('load',__callback)},
+        onWindowOnline:function(_callback){window.addEventListener('online',__callback)},
+        onWindowOffline:function(_callback){window.addEventListener('offline',__callback)},
+        onWindowScroll:function(_callback){window.addEventListener('scroll',__callback)},
+        onPageHide:function(_callback){window.addEventListener('pagehide',__callback)},
+        onPageShow:function(_callback){window.addEventListener('pageshow',__callback)},
+        clog:function(_message){console.log(_message)},
+        //#endregion BETTER-WORKFLOW
+        
+    }
+}
+
 //#region HELPER-FUNCTIONS ==========================================================================================================================================================================================
+        
 function moneyFormatFrom(_numberPrice,_currencyFormat='usa',_numberFormat='usa',_currencyDisplay ='symbol' /*'symbol' / 'code' / 'name'*/) {
-    return _numberPrice.toLocaleString(finalNumberFormat(),{style:"currency",currency:finalCurrencyCode(),currencyDisplay:_currencyDisplay.toLowerCase()});
-    function finalNumberFormat(){return parametersOptions(_numberFormat.toLowerCase())['country']}
-    function finalCurrencyCode(){return parametersOptions(_currencyFormat.toLowerCase())['currency']}
-    function parametersOptions(_input){
-        const _inputs_={
+      return _numberPrice.toLocaleString(finalNumberFormat(),{style:"currency",currency:finalCurrencyCode(),currencyDisplay:_currencyDisplay.toLowerCase()});
+      function finalNumberFormat(){return parametersOptions(_numberFormat.toLowerCase())['country']}
+      function finalCurrencyCode(){return parametersOptions(_currencyFormat.toLowerCase())['currency']}
+      function parametersOptions(_input){
+          const _inputs_={
             //br
             'br':localeStringOptions('_br_'),
             'ptbr':localeStringOptions('_br_'),
@@ -101,7 +122,14 @@ function moneyFormatFrom(_numberPrice,_currencyFormat='usa',_numberFormat='usa',
             }
             return _options_[_option];
         }
-        function Option(_currency,_country){this.currency=_currency;this.country=_country;}
+        function Option(_currency,_country){this.currency=_currency;this.country=_country}
     }
+}
+
+function swapNodesHelper(_node1,_node2){
+    areSiblings()?optionTrue():optionFalse();
+    function areSiblings(){_node1===_node2.nextElementSibling}
+    function optionTrue(){_node2.parentNode.insertBefore(_node1,_node2)}
+    function optionFalse(){_node1.replaceWith(_node2);_node2.parentNode.insertBefore(_node1,_node2.nextElementSibling)}
 }
 //#endregion HELPER-FUNCTIONS
