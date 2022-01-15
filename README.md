@@ -1,14 +1,15 @@
-# Lobo.js
-
+# Lobo.js, a JavaScript library for fluid and fast development.
 Lobo.js is a simple JavaScript file containing a pack of functions which will improve your development flow.
 
-To start using it, you just need to:
 
-0) copy the 'lobo' JavaScript file from this folder;
-1) paste it on the JavaScript repository of your project;
-2) write the following code at the end of your HTML body: <script src="yourPathHere/lobo.js"></script> ;
-3) drag that lobo.js <script> above any other scripts in which you will be calling lobo.js functions.
+## Setup
+0) copy the 'lobo.js' file (from the folder in which this 'readme' document is contained);
+1) paste it inside your project's 'js' folder (or wherever you want);
 
-Enjoy!
+## Use
+2) import it by writing the following line on the top of the script you are calling Lobo.js: import L from './lobo.js';
+3) make sure the script that is importing lobo.js has the 'type=module' property, like this: <script type="module" src="js/script.js"></script> 
+4) now, you can access any of its functions by calling the L object, just like: L.isEven(_n), or L.replaceAll('a','b');
 
-## JavaScript library for fluid and fast development.
+
+# Enjoy!

@@ -1,6 +1,6 @@
 export default function L (){
-    return {
 
+    return {
         //#region STRINGS ==========================================================================================================================================================================================
         // String.prototype.numbered:function(){return +(this.trim())}
         toNumber:function(_string){return +(_string.trim())},
@@ -19,7 +19,7 @@ export default function L (){
         
         //#region NUMBERS ==========================================================================================================================================================================================
         isEven:function(_n){return(_n)%2==0},
-        formatedToMoney:function(_n,_currencyFormat,_numberFormat,_currencyDisplay){return moneyFormatFrom(_n,_currencyFormat,_numberFormat,_currencyDisplay)},
+        formatedToMoney:function(_n,_currencyFormat,_numberFormat,_currencyDisplay){return formatedToMoneyHelper(_n,_currencyFormat,_numberFormat,_currencyDisplay)},
         randomFloatBetween:function(_min,_max){return _min+Math.random()*(_max-_min+1)},
         randomIntBetween:function(_min,_max){return Math.floor(randomFloatBetween(_min,_max))},
         //#endregion NUMBER
@@ -72,17 +72,17 @@ export default function L (){
         onTouchStart:function(_node,_callback){_node.addEventListener('touchstart',_callback)},
         onTouchMove:function(_node,_callback){_node.addEventListener('touchmove',_callback)},
         onTouchEnd:function(_node,_callback){_node.addEventListener('touchend',_callback)},
-        onTouchCancel:function(_callback){this.addEventListener('touchcancel',__callback)},
+        onTouchCancel:function(_callback){this.addEventListener('touchcancel',_callback)},
         //#endregion EVENTS
 
         //#region BETTER-WORKFLOW ==========================================================================================================================================================================================
         getTypeOf:function(_el){return Object.prototype.toString.call(_el).replace('[object ','').replace(']','')},
-        onWindowLoad:function(_callback){window.addEventListener('load',__callback)},
-        onWindowOnline:function(_callback){window.addEventListener('online',__callback)},
-        onWindowOffline:function(_callback){window.addEventListener('offline',__callback)},
-        onWindowScroll:function(_callback){window.addEventListener('scroll',__callback)},
-        onPageHide:function(_callback){window.addEventListener('pagehide',__callback)},
-        onPageShow:function(_callback){window.addEventListener('pageshow',__callback)},
+        onWindowLoad:function(_callback){window.addEventListener('load',_callback)},
+        onWindowOnline:function(_callback){window.addEventListener('online',_callback)},
+        onWindowOffline:function(_callback){window.addEventListener('offline',_callback)},
+        onWindowScroll:function(_callback){window.addEventListener('scroll',_callback)},
+        onPageHide:function(_callback){window.addEventListener('pagehide',_callback)},
+        onPageShow:function(_callback){window.addEventListener('pageshow',_callback)},
         clog:function(_message){console.log(_message)},
         //#endregion BETTER-WORKFLOW
         
@@ -91,7 +91,7 @@ export default function L (){
 
 //#region HELPER-FUNCTIONS ==========================================================================================================================================================================================
         
-function moneyFormatFrom(_numberPrice,_currencyFormat='usa',_numberFormat='usa',_currencyDisplay ='symbol' /*'symbol' / 'code' / 'name'*/) {
+function formatedToMoneyHelper(_numberPrice,_currencyFormat='usa',_numberFormat='usa',_currencyDisplay ='symbol' /*'symbol' / 'code' / 'name'*/) {
       return _numberPrice.toLocaleString(finalNumberFormat(),{style:"currency",currency:finalCurrencyCode(),currencyDisplay:_currencyDisplay.toLowerCase()});
       function finalNumberFormat(){return parametersOptions(_numberFormat.toLowerCase())['country']}
       function finalCurrencyCode(){return parametersOptions(_currencyFormat.toLowerCase())['currency']}
