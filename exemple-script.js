@@ -1,43 +1,44 @@
-onWindowLoad(()=>{
-    const title1 = getBySelector('h1');
+import L from './lobo.js';
+
+L.onWindowLoad(()=>{
+    const title1 = L.getBySelector(document,'h1');
     title1.innerHTML = "<s>document.querySelector()</s> --> <i>getByQuerySel()</i>";
     
-    const title2 = getById('secondText');
+    const title2 = L.getById(document,'secondText');
     title2.innerHTML = "<s>document.getElementById()</s> --> <i>getById()</i>";
 
-    const title3 = getBySelector('h3');
+    const title3 = L.getBySelector(document,'h3');
     title3.innerHTML = "<s>console.log()</s> --> <i>clog()</i>";
 
-    const title4 = getBySelector('h4');
+    const title4 = L.getBySelector(document,'h4');
     title4.innerHTML = " <s>_min + Math.random() * (_max - _min + 1)</s> --> <i>getRandomFloatBetween(_min, _max)</i> / <i>getRandomIntBetween(_min, _max)</i> ";
 
-    title4.onClick((e)=>{
-        e.currentTarget.toggleClass('a')
+    L.onClick(title4,(e)=>{
+        L.toggleClass(e.currentTarget, 'a')
+        L.appendNode(title4,   `
+        section>
+        <ul>
+        <li>aaa</li>
+        <li>a</li>
+        <li>aaa</li>
+        </ul>
+        </section><
+        `)
     })
-    title4.append(   `
-                        <section>
-                            <ul>
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                            </ul>
-                        </section>
-                        `)
 })
 
-clog('This is a "console.log()" shorthand from lobo.js');
+L.clog('This is a "console.log()" shorthand from lobo.js');
 
-clog((100).formatedToMoney('bra', 'bra','code'))
-clog(moneyFormatFrom(100,'bra', 'bra', 'symbol'))
+L.clog(L.moneyFormatFrom(100,'bra', 'bra','code'))
 
-clog(`
+L.clog(`
 ------------------- SIMPLE MONEY FORMAT FROM ANY NUMBER ------------------------
 
-moneyFormatFrom(100, 'usa', 'usa') -----------------> ${moneyFormatFrom(100, 'usa', 'usa', 'symbol')}
+moneyFormatFrom(100, 'usa', 'usa') -----------------> ${L.moneyFormatFrom(100, 'usa', 'usa', 'symbol')}
 
-moneyFormatFrom(100, 'usa', 'bra', 'code') ---------> ${moneyFormatFrom(100, 'usa', 'bra', 'code')}
+moneyFormatFrom(100, 'usa', 'bra', 'code') ---------> ${L.moneyFormatFrom(100, 'usa', 'bra', 'code')}
 
-moneyFormatFrom(100, 'bra', 'bra', 'name') ---------> ${moneyFormatFrom(100, 'bra', 'bra', 'name')}
+moneyFormatFrom(100, 'bra', 'bra', 'name') ---------> ${L.moneyFormatFrom(100, 'bra', 'bra', 'name')}
 
 ---------------------------------------------------------------------------------
 `);
