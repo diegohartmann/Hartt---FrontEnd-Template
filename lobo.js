@@ -6,7 +6,7 @@ function suffleHelper(_array){
     }
     return _array;
 }
-function moneyFormatFromHelper(_numberPrice,_currencyFormat='usa',_numberFormat='usa',_currencyDisplay ='symbol' /*'symbol' / 'code' / 'name'*/){
+function moneyFormatFromHelper(_numberPrice,_currencyFormat='usa',_numberFormat='usa',_currencyDisplay ='symbol' /*'symbol' / 'code' / 'key'*/){
     return _numberPrice.toLocaleString(finalNumberFormat(),{style:"currency",currency:finalCurrencyCode(),currencyDisplay:_currencyDisplay.toLowerCase()});
     function finalNumberFormat(){return parametersOptions(_numberFormat.toLowerCase())['country']}
     function finalCurrencyCode(){return parametersOptions(_currencyFormat.toLowerCase())['currency']}
@@ -46,6 +46,21 @@ function swapNodesHelper(_node1,_node2){
   function optionTrue(){_node2.parentNode.insertBefore(_node1,_node2)}
   function optionFalse(){_node1.replaceWith(_node2);_node2.parentNode.insertBefore(_node1,_node2.nextElementSibling)}
 }
+function sumHelper(_nums){
+    let sum = 0;
+    _nums.forEach(_n=>{
+        sum += _n;
+    })
+    return sum;
+}
+function multHelper(_nums){
+    let mult = 1;
+    _nums.forEach(_n=>{
+        mult *= _n;
+    })
+    return mult;
+}
+
 //#endregion HELPER-FUNCTIONS
 
 const L = {
@@ -64,6 +79,7 @@ const L = {
     biggestNumInArray:function(_array){return _array.reduce((_anterior,_current)=>{return _anterior>_current?_anterior:_current})},
     smallestNumInArray:function(_array){return _array.reduce((_anterior,_current)=>{return _anterior<_current?_anterior:_current})},
     shuffle:function(_array){return suffleHelper(_array)},
+    arrayQuery:function(_nodeListSelector){return Array.from(document.querySelectorAll(_nodeListSelector))},
     //#endregion ARRAY
     
     //#region NUMBERS ==========================================================================================================================================================================================
@@ -71,13 +87,16 @@ const L = {
     moneyFormatFrom:function(_n,_currencyFormat,_numberFormat,_currencyDisplay){return moneyFormatFromHelper(_n,_currencyFormat,_numberFormat,_currencyDisplay)},
     randomFloatBetween:function(_min,_max){return _min+Math.random()*(_max-_min+1)},
     randomIntBetween:function(_min,_max){return Math.floor(_min+Math.random()*(_max-_min+1))},
+    sum:function(..._nums){return this.sumHelper(_nums)},
+    multiplicate:function(..._nums){return this.multHelper(_nums)},
     //#endregion NUMBER
     
     //#region HTML-ELEMENTS ==========================================================================================================================================================================================
-    getById:function(_parent = document, _elementId){return _parent.getElementById(_elementId)},
-    getByClass:function(_parent = document, _elementClass){return _parent.getElementsByClassName(_elementClass)},
-    getBySelector:function(_parent = document, _selector){return _parent.querySelector(_selector)},
-    getBySelectorAll:function(_parent = document, _selector){return _parent.querySelectorAll(_selector)},
+    // getById:function(_parent = document, _elementId){return _parent.getElementById(_elementId)},
+    // getByClass:function(_parent = document, _elementClass){return _parent.getElementsByClasskey(_elementClass)},
+    // getBySelector:function(_parent = document, _selector){return _parent.querySelector(_selector)},
+    // getBySelectorAll:function(_parent = document, _selector){return _parent.querySelectorAll(_selector)},
+    arrayFromSel:function(_sel){return Array.from(document.querySelectorAll(_sel))},
     createNode:function(_htmlString){const placeholder=document.createElement('div');placeholder.innerHTML=_htmlString;return placeholder.firstElementChild},
     appendNode:function(_el,_htmlString){_el.appendChild(this.createNode(_htmlString))},
     addClass:function(_el,_class='active'){_el.classList.add(_class)},
@@ -124,7 +143,7 @@ const L = {
     //#endregion EVENTS
 
     //#region BETTER-WORKFLOW ==========================================================================================================================================================================================
-    getTypeOf:function(_el){return Object.prototype.toString.call(_el).replace('[object ','').replace(']','')},
+    typeOf:function(_el){return Object.prototype.toString.call(_el).replace('[object ','').replace(']','')},
     onWindowLoad:function(_callback){window.addEventListener('load',_callback)},
     onWindowOnline:function(_callback){window.addEventListener('online',_callback)},
     onWindowOffline:function(_callback){window.addEventListener('offline',_callback)},
@@ -133,6 +152,9 @@ const L = {
     onPageShow:function(_callback){window.addEventListener('pageshow',_callback)},
     clog:function(_message){console.log(_message)},
     copy:function(_string){navigator.clipboard.writeText(_string)},
+    saveLocalData:function(_key,_value){localStorage.setItem(_key,_value)},
+    loadLocalData:function(_key){return localStorage.getItem(_key)},
+    removeItem:function(_key){localStorage.removeItem(_key)},
     //#endregion BETTER-WORKFLOW
     
 }
