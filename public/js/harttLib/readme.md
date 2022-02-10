@@ -2,7 +2,7 @@
 is a JavaScript library containing useful functions.
 
 
-1. Import these method using: ```import {var} from './modules/hartLib/hartt.js' ``` 
+1. Import these method using: ```import {function1, function2} from './modules/hartLib/hartt.js' ``` 
 
 2. Check its use:
     - into the main script, 'script.js' file.
