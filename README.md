@@ -1,13 +1,16 @@
-# Hartt.js, a JavaScript library for fluid and fast development.
-Hartt.js is a simple JavaScript file containing a pack of functions which will improve your development flow.
-
-## Setup
-0) copy the 'Hartt.js' file (from the folder in which this 'readme' document is contained);
-1) paste it inside your project's 'js' folder (or wherever you want);
-
-## Use
-2) make sure the script (in which you intend to import Hartt.js's functions) has the 'type=module' property, like this:<script type="module" src="js/script.js"></script> 
-3) now, you can access any of its functions by importing their name, just like: import {isEven, replaceAll} from './Hart.js'; 
+# Hartt
+## is a front-end 'start-template' project.
+### all files are inside the 'public' folder.
 
 
-# Enjoy!
+I's a project template I used to use for my initial projects, which contains the Hartt Libs, that are:
+
+1. a __hartt.js__ file (with pre-made importable useful functions);
+
+2. and a __hartt.css__ file (with pre-made css classes and a complete style reset);
+
+
+## This template (as well as its libs files) are completly free for you to use :)
+
+
+More on my GITHUB: [github.com/diegohartmann]("https://github.com/diegohartmann/")

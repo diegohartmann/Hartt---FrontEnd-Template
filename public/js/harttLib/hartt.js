@@ -17,7 +17,7 @@ export const addToStartOfArray  = (_originalArray, _el) => {if(Array.isArray(_el
 //#endregion ARRAY
 
 //#region NUMBERS ==========================================================================================================================================================================================
-export const isEven             = _n => {return(_n)%2==0};
+export const isEven             = _n => {return _n%2 == 0};
 export const sum                = (..._nums) => {return sumHelper(_nums)};
 export const multiplicate       = (..._nums) => {return multHelper(_nums)};
 export const randomFloatBetween = (_min,_max) => {return randomFloatHelper(_min,_max)};
@@ -35,7 +35,6 @@ export const swapNodes          = (_node1,_node2) => {swapNodesHelper(_node1,_no
 export const createNode         = _htmlString => {return createNodeHelper(_htmlString)};
 export const appendNode         = (_el,_htmlString) => {_el.appendChild(createNodeHelper(_htmlString))};
 //#endregion HTML-ELEMENTS 
-
 
 //#region WINDOW-EVENTS ==========================================================================================================================================================================================
 export const onWindowLoad       = _callback => {window.addEventListener('load',_callback)};
@@ -56,8 +55,6 @@ export const loadLocalData      = _key => {return localStorage.getItem(_key)};
 export const saveLocalData      = (_key,_value) => {localStorage.setItem(_key,_value)};
 export const copy               = _string => {navigator.clipboard.writeText(_string)};
 //#endregion BETTER-WORKFLOW
-
-
 
 
 //#region HELPER-FUNCTIONS ==========================================================================================================================================================================================

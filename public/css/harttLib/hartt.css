@@ -1,0 +1,95 @@
+:root{
+    --theme-1: yellow;
+    --theme-2: blue;
+    --theme-3: red;
+    /* ----------- box-shadows -------------- */
+    --vignette-1: 0 0 200px rgba(0,0,0,0.5) inset;
+    --vignette-2: 0 0 1500px rgba(0,0,0,0.5) inset;
+    --vignette-3: 0 0 30px rgba(255, 255, 255, 0.527) inset;
+    --glow-1: 
+        inset 0 0 60px whitesmoke,
+        inset 20px 0 80px #f0f,
+        inset -20px 0 80px #0ff,
+        inset 20px 0 300px #f0f,
+        inset -20px 0 300px #0ff,
+        0 0 50px #fff,
+        -10px 0 80px #f0f,
+        10px 0 80px #0ff;
+}
+.overlay-screen,.screen-overlay{position:fixed;inset:0;width:100vw;height:100vh}
+.no-select{user-select:none;-moz-user-select:none;-webkit-user-select:none;pointer-events:none}
+.vignette-1{box-shadow:var(--vignette-1)}.vignette-2{box-shadow:var(--vignette-2)}.vignette-3{box-shadow:var(--vignette-3)}
+.glow-1{box-shadow:var(--glow-1)}
+.fade-out{opacity:0;pointer-events:none}.fade-in{opacity:1;pointer-events:unset}
+/* components------------------------------ */
+#load-page{position:fixed;width:100vw;height:100vh;inset:0;z-index:999;background-color:#333}
+/* reset  =================================================================================== */
+*,*{box-sizing:border-box;-o-box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;-webkit-font-smoothing:antialiased}
+*:after{content:''}*:before{content:''}img{display:block;max-width:100vw}
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,
+cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,
+ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,
+embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{
+font-size:100%;font-weight:normal;margin:0;padding:0;vertical-align:baseline;border:0;outline:0}
+/* HTML5 display-role reset for older browsers =================================================================================== */
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}
+ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}
+table{border-collapse:collapse;border-spacing:0}
+/* display =================================================================================== */
+.hide,.hidden{display:none}.flex{display:flex}.inline-flex{display:inline-flex}.block{display:block}.inline-block{display:inline-block}.grid{display:grid}.grid{display:inline-grid}.inline{display:inline}
+/* position =================================================================================== */
+.static{position:static}.fixed{position:fixed}.relative{position:relative}.absolute{position:absolute}.center-self{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}.center-child{display:grid;place-items:center}
+/* extra =================================================================================== */
+.slider-container{scroll-snap-type:x mandatory}.slider{scroll-snap-align:start}
+.prevent-flick{backface-visibility:hidden;--translate3DZero:translate3d(0,0,0);transform:var(--translate3DZero);-webkit-transform:var(--translate3DZero);-moz-transform:var(--translate3DZero)}
+/* debug =================================================================================== */
+.debug{border:2px solid red;background-color:rgba(255,0,0,.3)}.debug-1{border:2px solid purple;background-color:rgba(162,0,255,.3)}.debug-2{border:2px solid blue;background-color:rgba(0,68,255,.3)}.debug-3{border:2px solid greenyellow;background-color:rgba(123,255,0,.3)}
+/* widths  =================================================================================== */
+.w-5-percent{width:5%}.w-10-percent{width:10%}.w-15-percent{width:15%}.w-20-percent{width:20%}.w-25-percent{width:25%}.w-33-percent{width:33.33%}.w-40-percent{width:40%}.w-50-percent{width:50%}.w-100-percent{width:100%}
+.w-5-vw{width:5vw}.w-10-vw{width:10vw}.w-15-vw{width:15vw}.w-20-vw{width:20vw}.w-25-vw{width:25vw}.w-33-vw{width:33.33vw}.w-40-vw{width:40vw}.w-50-vw{width:50vw}.w-100-vw{width:100vw}
+/* heights (%) =================================================================================== */
+.h-50-percent{height:50%}.h-85-percent{height:85%}.h-90-percent{height:90%}.h-91-percent{height:91%}.h-92-percent{height:92%}.h-93-percent{height:93%}.h-94-percent{height:94%}.h-95-percent{height:95%}.h-100-percent{height:100%}
+.h-50-vh{height:50vh}.h-85-vh{height:85vh}.h-90-vh{height:90vh}.h-91-vh{height:91vh}.h-92-vh{height:92vh}.h-93-vh{height:93vh}.h-94-vh{height:94vh}.h-95-vh{height:95vh}.h-100-vh{height:100vh}
+/* container-size =================================================================================== */
+.w-content{width:fit-content}.h-content{height:fit-content}.size-content{height:fit-content;width:fit-content}
+/* padding =================================================================================== */
+.pd-1rem{padding:1rem}.pd-5rem{padding:5rem}
+/* opacitys (%) =================================================================================== */
+.opacity-5{opacity:5%}.opacity-10{opacity:10%}.opacity-15{opacity:15%}.opacity-30{opacity:30%}.opacity-20{opacity:20%}.opacity-25{opacity:25%}.opacity-35{opacity:35%}.opacity-40{opacity:40%}.opacity-45{opacity:45%}.opacity-50{opacity:50%}.opacity-55{opacity:55%}.opacity-60{opacity:60%}.opacity-65{opacity:65%}
+/* background-opacity- (white) =================================================================================== */
+.bg-opacity-100{background-color:rgba(255,255,255)}.bg-opacity-50{background-color:rgba(255,255,255,0.50)}.bg-opacity-25{background-color:rgba(255,255,255,0.25)}.bg-opacity-15{background-color:rgba(255,255,255,0.15)}
+/* move with negative margin (px) =================================================================================== */
+.move-up-10{margin-top:-10px}.move-up-15{margin-top:-15px}.move-up-20{margin-top:-20px}.move-up-25{margin-top:-25px}.move-up-30{margin-top:-30px}.move-up-35{margin-top:-35px}.move-up-40{margin-top:-40px}.move-up-45{margin-top:-45px}.move-up-50{margin-top:-50px}.move-up-55{margin-top:-55px}.move-up-60{margin-top:-60px}.move-up-90{margin-top:-90px}.move-up-100{margin-top:-100px}.move-down-10{margin-bottom:-10px}.move-down-15{margin-bottom:-15px}.move-down-20{margin-bottom:-20px}.move-down-25{margin-bottom:-25px}.move-down-30{margin-bottom:-30px}.move-down-35{margin-bottom:-35px}.move-down-40{margin-bottom:-40px}.move-down-45{margin-bottom:-45px}.move-down-50{margin-bottom:-50px}.move-down-55{margin-bottom:-55px}.move-right-10{margin-right:-10px}.move-right-15{margin-right:-15px}.move-right-20{margin-right:-20px}.move-right-25{margin-right:-25px}.move-right-30{margin-right:-30px}.move-right-35{margin-right:-35px}.move-right-40{margin-right:-40px}.move-right-45{margin-right:-45px}.move-right-50{margin-right:-50px}.move-right-55{margin-right:-55px}.move-left-10{margin-left:-10px}.move-left-15{margin-left:-15px}.move-left-20{margin-left:-20px}.move-left-25{margin-left:-25px}.move-right-30{margin-left:-30px}.move-right-35{margin-left:-35px}.move-right-40{margin-left:-40px}.move-left-45{margin-right:-45px}.move-left-50{margin-right:-50px}.move-left-55{margin-right:-55px}
+/* z-index =================================================================================== */
+.z-0{z-index:0}.z-1{z-index:1}.z-2{z-index:2}.z-3{z-index:3}.z-4{z-index:4}.z-5{z-index:5}.z-6{z-index:6}
+/* overflow  =================================================================================== */
+.overflow-visible{overflow:visible}.overflow-hide{overflow:hide}.overflow-scroll{overflow:scroll}.overflow-auto{overflow:auto}.overflow-x-visible{overflow-x:visible}.overflow-x-hide{overflow-x:hide}.overflow-x-scroll{overflow-x:scroll}.overflow-x-auto{overflow-x:auto}.overflow-y-visible{overflow-y:visible}.overflow-y-hide{overflow-y:hide}.overflow-y-scroll{overflow-y:scroll}.overflow-y-auto{overflow-y:auto}
+/* flex =================================================================================== */
+.jc-fs{justify-content:flex-start}.jc-fe{justify-content:flex-end}
+/* grid =================================================================================== */
+.jc-s{justify-content:start}.jc-e{justify-content:end}
+/* flex and grid =================================================================================== */
+.gap-1px{gap:1px}.gap-2px{gap:2px}.gap-3px{gap:3px}.gap-4px{gap:4px}.gap-5px{gap:5px}.gap-6px{gap:6px}.gap-7px{gap:7px}.gap-8px{gap:8px}.gap-9px{gap:9px}.gap-10px{gap:10px}.gap-11px{gap:11px}.jc-c{justify-content:center}.jc-sa{justify-content:space-around}.jc-sb{justify-content:space-between}.jc-se{justify-content:space-evenly}.ai-c{align-items:center}
+/* hover =================================================================================== */
+.default-hover{cursor:pointer;transition:.2s;transform:scale(1)}.default-hover:hover{transform:scale(1.1)}
+/* anim =================================================================================== */
+.anim-duration-var{animation-duration:calc(1s*var(--duration))}
+.anim-duration-01{animation-duration:0.1s}.anim-duration-02{animation-duration:0.2s}.anim-duration-03{animation-duration:0.3s}.anim-duration-04{animation-duration:0.4s}.anim-duration-05{animation-duration:0.5s}
+.anim-delay-var{animation-delay:calc(1s*var(--delay))}
+.anim-delay-01{animation-delay:0.1s}.anim-delay-02{animation-delay:0.2s}.anim-delay-03{animation-delay:0.3s}.anim-delay-04{animation-delay:0.4s}.anim-delay-05{animation-delay:0.5s}
+.anim-fill-mode-forwards{animation-fill-mode:forwards}.anim-fill-mode-backwards{animation-fill-mode:backwards}
+.anim-iteration-count-var{animation-iteration-count:var(--iteration-count)}
+.anim-iteration-count-1{animation-iteration-count:1}.anim-iteration-count-2{animation-iteration-count:2}.anim-iteration-count-3{animation-iteration-count:3}.anim-iteration-count-4{animation-iteration-count:4}
+.anim-iteration-count-infinite{animation-iteration-count:infinite}
+.anim-show-from-left{animation-name:show-from-left}
+.anim-show-from-right{animation-name:show-from-right}
+.anim-show-from-bottom{animation-name:show-from-bottom}
+.anim-show-from-top{animation-name:show-from-top}
+.anim-fade-in{animation-name:fade-in}
+.anim-fade-out{animation-name:fade-out}
+@keyframes show-from-top   {from{opacity:0;transform:translateY(-100vh)} to{opacity:1;transform:translateY(0)}}
+@keyframes show-from-bottom{from{opacity:0;transform:translateY(+100vh)} to{opacity:1;transform:translateY(0)}}
+@keyframes show-from-left  {from{opacity:0;transform:translateX(-100vw)} to{opacity:1;transform:translateX(0)}}
+@keyframes show-from-right {from{opacity:0;transform:translateX(+100vw)} to{opacity:1;transform:translateX(0)}}
+@keyframes fade-in  {from{opacity:0;pointer-events:none } to{opacity:1;pointer-events:unset}}
+@keyframes fade-out {from{opacity:1;pointer-events:unset} to{opacity:0;pointer-events:none}}
